@@ -199,5 +199,3 @@ function gameOver() {
     $wpm.textContent = wpm
     $accuracy.textContent = `${accuracy.toFixed(2)}%`
 }
-
-main()

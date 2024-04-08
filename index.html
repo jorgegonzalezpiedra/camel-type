@@ -4,12 +4,22 @@
   
 </style>
 <head>
-  <link rel="stylesheet" href="css/cameltype.css">
-  <script type="module" src="js/cameltype.js"></script>
+  <link rel="stylesheet" href="css/cameltype.css">  
   <script type="module" src="js/game.js"></script>
 </head>
 <body>
   <main>
+    <section id="languaje">
+      <div class="box">
+        <a class="languaje-button" href="#languaje-popup">Languaje</a>
+      </div>
+      <div id="languaje-popup" class="overlay">
+        <div class="languaje-popup">
+          <h2>Select languaje</h2>
+	      	<a class="close" href="#">&times;</a>
+        </div>
+      </div>
+    </section>
     <section id="game">
       <time></time>
       <p></p>
@@ -20,7 +30,7 @@
       <h3 id="results-wpm"></h3>
       <h2>accuracy</h2>
       <h3 id="results-accuracy"></h3>
-      <button id="reload-button">
+      <button id="reload-button" class="replay-button">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
           stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
