@@ -4,21 +4,19 @@
   
 </style>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/cameltype.css">  
   <script type="module" src="js/game.js"></script>
+  <script defer src="js/camel-type.js"></script>
 </head>
 <body>
   <main>
     <section id="languaje">
-      <div class="box">
-        <a class="languaje-button" href="#languaje-popup">Languaje</a>
-      </div>
-      <div id="languaje-popup" class="overlay">
-        <div class="languaje-popup">
+        <button type="button" class="languaje-button" onclick="openPopup()">Submit</button>
+        <div id="languaje-popup" class="languaje-popup">
           <h2>Select languaje</h2>
-	      	<a class="close" href="#">&times;</a>
+          <button type="button" class="languaje-button" onclick="closePopup()">OK</button>
         </div>
-      </div>
     </section>
     <section id="game">
       <time></time>
