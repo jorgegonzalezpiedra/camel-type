@@ -5,15 +5,17 @@
 
 :root {
   color-scheme: light dark;
-  --green: #00b755;
-  --yellow: #daaf38;
-  --red: #ca4754;
-  --black: #222;
-  --gray: #999;
+  --main-green: #00b755;
+  --main-yellow: #daaf38;
+  --main-red: #ca4754;
+  --main-black: #222;
+  --main-gray: #999;
+  --sencodary-gray: #333;
+  --main-white: #fff;
 }
 
 body {
-  background: var(--black);
+  background: var(--main-black);
   font-family: RobotoMono, monospace;
   display: grid;
   padding: 32px;
@@ -27,11 +29,11 @@ section {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-width: 500px;
+  max-width: 700px;
 }
 
 time {
-  color: var(--yellow)
+  color: var(--main-yellow)
 }
 
 input {
@@ -51,12 +53,13 @@ p {
 }
 
 letter {
-  color: var(--gray);
+  color: var(--main-gray);
   position: relative;
+  opacity: 50%;
 
   &.active::before {
     content: '|';
-    color: var(--yellow);
+    color: var(--main-yellow);
     font-size: 14px;
     position: absolute;
     left: -65%;
@@ -68,11 +71,13 @@ letter {
   }
 
   &.correct {
-    color: var(--green);
+    color: var(--main-white);
+    opacity: 100%;
   }
 
   &.incorrect {
-    color: var(--red);
+    color: var(--main-red);
+    opacity: 100%;
   }
 }
 
@@ -81,7 +86,7 @@ word {
   transition: border-color 0.3s ease-in-out;
 
   &.marked {
-    border-color: var(--red);
+    border-color: var(--main-red);
   }
 }
 
@@ -110,19 +115,19 @@ h2 {
   opacity: .4;
   margin: 0;
   font-size: 16px;
-  color: white;
+  color: var(--main-white);
 }
 
 h3 {
   font-weight: 400;
   margin: 0;
   font-size: 24px;
-  color: var(--yellow);
+  color: var(--main-yellow);
 }
 
 button {
   background: transparent;
-  color: white;
+  color: var(--main-white);
   border: 0;
   margin-top: 32px;
   padding: 8px;
@@ -133,7 +138,7 @@ button {
   border-radius: 16px;
 
   &:hover {
-    background-color: #444;
+    background-color: var(--sencodary-gray);
     opacity: 1;
     scale: 110%;
   }
@@ -141,29 +146,74 @@ button {
 
 /* POPUP LANGAUJE*/
 .languaje-button{
-  color: var(--gray);
+  color: var(--sencodary-gray);
+  background-color: var(--sencodary-gray);
   align-items: center;
   justify-content: center;
+  width: 50%;
 }
 
 .languaje-popup {
-  z-index: 999;
-  width: 50%;
-  background: #fff;
+  z-index: 1000;
+  width: 35%;
+  background: var(--sencodary-gray);
   border-radius: 6px;
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
+  backdrop-filter: blur(5px);
   text-align: center;
-  padding: 0 30px 60px;
-  color: #333;
+  padding-top: 5;
+  color: var(--sencodary-gray);
   visibility: hidden;
   transition: all 0.4s ease-in-out;
 }
 
 .open-languaje-popup{
   visibility: visible;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Blur the background */
+  z-index: 900;
+  display: none;
+}
+
+.text-button{
+  opacity: 60%;
+  color: var(--main-gray);
+  cursor: pointer;
+}
+
+.text-button:hover{
+  opacity: 100%;
+  color: var(--main-gray);
+  cursor: pointer;
+}
+
+ul{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  color: var(--main-gray);
+  cursor: pointer;
+  position: relative;
+  list-style-type: none;
+  padding: 10;
+  margin: 0;
+  position: relative;
+}
+
+ul li:hover {
+  background: var(--main-white);
 }

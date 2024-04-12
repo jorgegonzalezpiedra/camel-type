@@ -1,12 +1,12 @@
 const wordsApiUrl = 'https://random-word-api.herokuapp.com/word?number=50&lang=en';
 const $time = document.querySelector('time');
 const $paragraph = document.querySelector('p');
-const $input = document.querySelector('input');
-const $game = document.querySelector('#game')
-const $results = document.querySelector('#results')
+const $input = document.getElementById('input-word');
+const $game = document.getElementById('game')
+const $results = document.getElementById('results')
 const $wpm = $results.querySelector('#results-wpm')
 const $accuracy = $results.querySelector('#results-accuracy')
-const $button = document.querySelector('#reload-button')
+const $button = $results.querySelector('#reload-button')
 
 const INITIAL_TIME = 30
 
@@ -16,7 +16,7 @@ let playing
 
 initWords()
 
-async function initWords(){
+export async function initWords(){
     fetch(wordsApiUrl)
     .then(response => {
       if (!response.ok) {
@@ -41,7 +41,7 @@ async function initWords(){
   
 }
 
-async function initGame() {
+export async function initGame() {
     $game.style.display = 'flex'
     $results.style.display = 'none'
     $input.value = ''
@@ -69,7 +69,7 @@ async function initGame() {
     $firstWord.querySelector('letter').classList.add('active')
 }
 
-async function initEvents() {
+export async function initEvents() {
     document.addEventListener('keydown', () => {
         $input.focus()
         if (!playing) {
@@ -90,7 +90,7 @@ async function initEvents() {
     $button.addEventListener('click', initGame)
 }
 
-function onKeyDown(event) {
+export function onKeyDown(event) {
     const $currentWord = $paragraph.querySelector('word.active')
     const $currentLetter = $currentWord.querySelector('letter.active')
 
@@ -148,7 +148,7 @@ function onKeyDown(event) {
     }
 }
 
-function onKeyUp() {
+export function onKeyUp() {
     // recuperamos los elementos actuals
     const $currentWord = $paragraph.querySelector('word.active')
     const $currentLetter = $currentWord.querySelector('letter.active')
@@ -181,7 +181,7 @@ function onKeyUp() {
     }
 }
 
-function gameOver() {
+export function gameOver() {
     $game.style.display = 'none'
     $results.style.display = 'flex'
 
