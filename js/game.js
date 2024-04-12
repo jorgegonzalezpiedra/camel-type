@@ -1,4 +1,7 @@
-const wordsApiUrl = 'https://random-word-api.herokuapp.com/word?number=50&lang=en';
+/**
+ * JS of game behaviour
+ */
+export let wordsApiUrl = 'https://random-word-api.herokuapp.com/word?number=50&lang=en';
 const $time = document.querySelector('time');
 const $paragraph = document.querySelector('p');
 const $input = document.getElementById('input-word');
@@ -7,6 +10,7 @@ const $results = document.getElementById('results')
 const $wpm = $results.querySelector('#results-wpm')
 const $accuracy = $results.querySelector('#results-accuracy')
 const $button = $results.querySelector('#reload-button')
+const $languajeButton = document.getElementById('languaje-button')
 
 const INITIAL_TIME = 30
 
@@ -183,6 +187,8 @@ export function onKeyUp() {
 
 export function gameOver() {
     $game.style.display = 'none'
+    $languajeButton.style.display = 'none'
+
     $results.style.display = 'flex'
 
     const correctWords = $paragraph.querySelectorAll('word.correct').length
@@ -198,4 +204,8 @@ export function gameOver() {
     const wpm = correctWords * 60 / INITIAL_TIME
     $wpm.textContent = wpm
     $accuracy.textContent = `${accuracy.toFixed(2)}%`
+}
+
+export function setWorldApi(api){
+    wordsApiUrl = api;
 }
