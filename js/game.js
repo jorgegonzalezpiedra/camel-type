@@ -45,8 +45,8 @@ export async function initGame() {
     $game.style.display = 'flex'
     $languajeButton.style.display = 'block'
     $results.style.display = 'none'
-    $input.focus
     $input.value = ''
+    $input.focus()
 
     playing = false
 
@@ -72,7 +72,7 @@ export async function initGame() {
 }
 
 export async function initEvents() {
-    document.addEventListener('keydown', () => {
+    $input.addEventListener('keydown', () => {
         $input.focus()
         if (!playing) {
         playing = true
@@ -90,7 +90,7 @@ export async function initEvents() {
     $input.addEventListener('keydown', onKeyDown)
     $input.addEventListener('keyup', onKeyUp)
     $button.addEventListener('click', initGame)
-    $paragraph.addEventListener('click', $input.focus)
+    $paragraph.addEventListener('click', $input.focus())
 }
 
 export function onKeyDown(event) {

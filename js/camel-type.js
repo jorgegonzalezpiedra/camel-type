@@ -11,13 +11,18 @@ const $languajeButton = document.getElementById('languaje-button')
 const $input = document.getElementById('input-word');
 const $languajesList = document.getElementById('languajes-list');
 const $languajeText = document.getElementById('languaje-text');
+const $popupOverlay = document.getElementById('languaje-popup-overlay');
 
 $languajeButton.addEventListener("click", () =>{
   openPopup();
 }); 
 
+$popupOverlay.addEventListener("click", () =>{
+  closePopup()
+})
+
 export function openPopup(){
-  $input.blur
+  $input.blur()
   $languajePopup.classList.add('open-languaje-popup')
   document.querySelector('.popup-overlay').style.display = 'block';
 
@@ -43,7 +48,8 @@ export function openPopup(){
 }
 
 export function closePopup(){
-  $input.blur
+  $input.blur()
+  $input.focus()
   $languajePopup.classList.remove('open-languaje-popup')
   document.querySelector('.popup-overlay').style.display = 'none'; 
 }
@@ -51,7 +57,7 @@ export function closePopup(){
 export function selectLanguaje(lang , langText){
   let wordsApiUrl = "https://random-word-api.herokuapp.com/word?number=50&lang=" + lang
   $languajeText.innerHTML = langText
-  $input.focus
+  $input.focus()
   setWorldApi(wordsApiUrl);
   closePopup()
   initWords()
