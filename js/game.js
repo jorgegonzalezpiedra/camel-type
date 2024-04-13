@@ -90,6 +90,7 @@ export async function initEvents() {
     $input.addEventListener('keydown', onKeyDown)
     $input.addEventListener('keyup', onKeyUp)
     $button.addEventListener('click', initGame)
+    $paragraph.addEventListener('click', $input.focus)
 }
 
 export function onKeyDown(event) {
