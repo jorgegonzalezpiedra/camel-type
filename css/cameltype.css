@@ -3,6 +3,18 @@
     src: url(/assets/RobotoMono-VariableFont_wght.ttf);
 }
 
+@keyframes blink {
+
+  0%,
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+  }
+}
+
 :root {
   color-scheme: light dark;
   --main-green: #00b755;
@@ -90,18 +102,6 @@ word {
   }
 }
 
-@keyframes blink {
-
-  0%,
-  25% {
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 0;
-  }
-}
-
 #game {
   display: flex;
 }
@@ -167,6 +167,10 @@ button {
   color: var(--sencodary-gray);
   visibility: hidden;
   transition: all 0.4s ease-in-out;
+}
+
+.languaje-popup h2{
+  margin-bottom: 10;
 }
 
 .open-languaje-popup{

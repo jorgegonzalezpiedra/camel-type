@@ -1,7 +1,7 @@
 /**
  * JS of game behaviour
  */
-export let wordsApiUrl = 'https://random-word-api.herokuapp.com/word?number=50&lang=en';
+export let wordsApiUrl = 'https://random-word-api.herokuapp.com/word?number=30&lang=en';
 const $time = document.querySelector('time');
 const $paragraph = document.querySelector('p');
 const $input = document.getElementById('input-word');
@@ -30,11 +30,7 @@ export async function initWords(){
     })
     .then(data => {
         
-      words = data
-      
-      words = words.toSorted(
-        () => Math.random() - 0.5
-      ).slice(0, 30)
+      words = trimWords(data).slice(0,30)
 
       initGame()
       initEvents()
@@ -47,7 +43,9 @@ export async function initWords(){
 
 export async function initGame() {
     $game.style.display = 'flex'
+    $languajeButton.style.display = 'block'
     $results.style.display = 'none'
+    $input.focus
     $input.value = ''
 
     playing = false
@@ -208,4 +206,22 @@ export function gameOver() {
 
 export function setWorldApi(api){
     wordsApiUrl = api;
+}
+
+/**
+ * The api that returns words, sometimes, return in one position 
+ * more than one word. Eg: "Más fuerte"
+ * This method treat that to trim that words and re-arrange the array
+ */
+export function trimWords(words){
+
+    words.forEach((word, index) => {
+        if(word.indexOf(' ') >= 0){
+            let arr = word.split(' ')
+            words.splice(index, 1, ...arr)
+        }
+    })
+
+    return words;
+
 }

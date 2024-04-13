@@ -51,6 +51,7 @@ export function closePopup(){
 export function selectLanguaje(lang , langText){
   let wordsApiUrl = "https://random-word-api.herokuapp.com/word?number=50&lang=" + lang
   $languajeText.innerHTML = langText
+  $input.focus
   setWorldApi(wordsApiUrl);
   closePopup()
   initWords()
