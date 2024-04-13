@@ -1,5 +1,6 @@
 # Esto es camelType 🐫
-Hola! 🤙 
+¡Hola! 🤙
+
 Esto es camelType, un proyecto simple que replica la funcionalidad básica de un type-test utilizando unicamente HTML, CSS y JavaScript.
 
 ## Demo
