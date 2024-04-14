@@ -72,7 +72,7 @@ export async function initGame() {
 }
 
 export async function initEvents() {
-    $input.addEventListener('keydown', () => {
+    document.addEventListener('keydown', () => {
         $input.focus()
         if (!playing) {
         playing = true
@@ -87,10 +87,10 @@ export async function initEvents() {
         }, 1000)
         }
     })
-    $input.addEventListener('keydown', onKeyDown)
+    document.addEventListener('keydown', onKeyDown)
     $input.addEventListener('keyup', onKeyUp)
     $button.addEventListener('click', initGame)
-    $paragraph.addEventListener('click', $input.focus())
+    // $paragraph.addEventListener('click', $input.focus())
 }
 
 export function onKeyDown(event) {
@@ -98,7 +98,9 @@ export function onKeyDown(event) {
     const $currentLetter = $currentWord.querySelector('letter.active')
 
     const { key } = event
-    if (key === ' ') {
+    
+    if (key === ' ' || key.keyCode === '32' || key.keyCode === '229') {
+        
         event.preventDefault()
 
         const $nextWord = $currentWord.nextElementSibling
@@ -152,7 +154,6 @@ export function onKeyDown(event) {
 }
 
 export function onKeyUp() {
-    // recuperamos los elementos actuals
     const $currentWord = $paragraph.querySelector('word.active')
     const $currentLetter = $currentWord.querySelector('letter.active')
 
