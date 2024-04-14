@@ -20,6 +20,10 @@ let playing
 
 initWords()
 
+window.addEventListener('DOMContentLoaded', function() {
+    $input.select();
+});
+
 export async function initWords(){
     fetch(wordsApiUrl)
     .then(response => {
@@ -87,21 +91,23 @@ export async function initEvents() {
         }, 1000)
         }
     })
-    document.addEventListener('keydown', onKeyDown)
+
+    //NOTE: We have to usar event "input" instead of "keydown" because mobile browser 
+    //works differnetly and produce errors handling the key "spacebar"
+    document.addEventListener('input', onKeyDown)
     $input.addEventListener('keyup', onKeyUp)
-    $button.addEventListener('click', initGame)
+    $button.addEventListener('click', initWords)
     // $paragraph.addEventListener('click', $input.focus())
 }
 
 export function onKeyDown(event) {
     const $currentWord = $paragraph.querySelector('word.active')
     const $currentLetter = $currentWord.querySelector('letter.active')
-
-    const { key } = event
-    
-    if (key === ' ' || key.keyCode === '32' || key.keyCode === '229') {
-        
-        event.preventDefault()
+    let key  = event.target.value[event.target.value.length - 1]
+   
+    if (key === ' ') {
+        //alert(key)
+        //event.preventDefault()
 
         const $nextWord = $currentWord.nextElementSibling
         const $nextLetter = $nextWord.querySelector('letter')
@@ -158,7 +164,7 @@ export function onKeyUp() {
     const $currentLetter = $currentWord.querySelector('letter.active')
 
     const currentWord = $currentWord.innerText.trim()
-    $input.maxLength = currentWord.length
+    $input.maxLength = currentWord.length + 1
 
     const $allLetters = $currentWord.querySelectorAll('letter')
 
